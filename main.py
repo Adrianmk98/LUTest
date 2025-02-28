@@ -28,7 +28,7 @@ def get_loan(userid):
         return response.json().get("item_loan",[])
     return[]
 
-#gets all load information
+#gets all fee information
 def get_fines(userid):
     fines_URL=Base_URL+"/users/"+userid+"/fees"
     response=requests.get(fines_URL,headers=Auth,params={"limit":50})
@@ -38,7 +38,7 @@ def get_fines(userid):
     return[],0
 
 
-
+#gets users, then runs through each user to get their loan and fee info
 def generate_html():
     user=get_users()
     user_data = []
@@ -82,13 +82,13 @@ def generate_html():
             {% endfor %}
         </table>
     </body></html>
-''')
+''')#Just need the table
     html_content = htmlbase.render(users=user_data)
 
-    # Save to file
+    # Create the file
     with open("report.html", "w", encoding="utf-8") as file:
         file.write(html_content)
 
-    print("Report generated: alma_users_report.html")
+    print("Report generated: report.html")
 
 generate_html()
