@@ -1,5 +1,6 @@
 import requests
 import json
+#I know I shouldnt make the API key public but its the demo
 API_Key="l7xx2af7939c63424511946e0fcdc35fe22a"
 Base_URL="https://api-eu.hosted.exlibrisgroup.com/almaws/v1"
 Auth={
